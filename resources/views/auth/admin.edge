@@ -3,7 +3,8 @@
 @section('content')
 
   <main class="flex flex-wrap justify-center mt-24">
-    @!form.login({ title: 'Admin Login' })
+    @!form.login({ title: 'Admin Login', action: route('auth.admin.login') })
+    @!form.register({ title: 'Admin Registration (for simplicity)', action: route('auth.admin.register') })
 
     <div class="w-full text-center mt-8">
       <a href="{{ route('auth.user.index') }}" class="text-blue-600">

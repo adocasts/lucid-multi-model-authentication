@@ -25,5 +25,15 @@ Route.get('/', async ({ view }) => {
 })
 
 Route.get('/auth/user', 'AuthUserController.index').as('auth.user.index')
+Route.post('/auth/user/register', 'AuthUserController.register').as('auth.user.register')
+Route.post('/auth/user/login', 'AuthUserController.login').as('auth.user.login')
 
 Route.get('/auth/admin', 'AuthAdminController.index').as('auth.admin.index')
+Route.post('/auth/admin/register', 'AuthAdminController.register').as('auth.admin.register')
+Route.post('/auth/admin/login', 'AuthAdminController.login').as('auth.admin.login')
+
+Route.get('/auth/logout', async ({ response, auth }) => {
+  await auth.logout()
+
+  return response.redirect('/')
+}).as('auth.logout')
